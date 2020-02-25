@@ -8,9 +8,12 @@ It makes a difference if your model predicts 100 requests per day with a signifi
 
 For this reason, it is quite interesting to have some reliable means to estimate the uncertainty of your predictions. 
 
-The Bayesian view on statistics provides a powerful approach to assess this. 
+The Bayesian view on statistics provides a powerful approach to assess this. In the context of regression models, this gave rise to the development of Gaussian process models which in a sense provide a generalization of distributions to function space. 
 
-Wheather forecasts long deal with the fact that their predictions are subject to uncertainty. What they do is that they use [model ensembles](https://www.ecmwf.int), that means not a single model, but a set of models with only slight modifications. These so-called perturbations can be incorporated either [in the starting conditions or in the integration steps of the model](https://www.ecmwf.int/en/research/modelling-and-prediction/quantifying-forecast-uncertainty). 
+As such, their predictions always consist of a full distribution with mean and confidence intervals. It is important to note that the latter actually come for free as they are an intrinsic part of the model, whereas most other models have to do special tricks in order to provide something similar (as for example [dropout for Neural Networks ensembles](https://arxiv.org/abs/1506.02142)). 
 
-Basically, you can do the same with your data-driven machine learning model. Neural networks are one example which are often used in model ensembles. Here, the perturbation is created by having slightly different conditions or hyperparameters for the model training. For example using
+So let us have a look at a quick example of how Gaussian process models can be applied and how they compare to a classical ARIMA approach. 
+
+As test data we take a [data set from the statsmodel library](www.statsmodels.org/stable/datasets/generated/sunspots.html) that describes the sun activity between the years 1700 and 2008.
+
 
