@@ -18,6 +18,10 @@ As test data we take a [data set from the statsmodel library](www.statsmodels.or
 
 ![](/_images/Data.png "The data used in this example (originally taken from [http://www.ngdc.noaa.gov/stp/solar/solarda3.html](http://www.ngdc.noaa.gov/stp/solar/solarda3.html))")
 
+## The SARIMA model
+
+First, we have a look at the SARIMA model. We include a seasonal (S) part to the classical ARIMA model, since obviously the data has strong seasonal variations (the ups and downs with a more or less constant frequency).  
+
 ![](/_images/ARIMA_1_0_1__1_2_1_11__prediction.png "Results from the SARIMA model")
 
 
