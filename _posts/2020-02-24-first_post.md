@@ -16,4 +16,4 @@ So let us have a look at a quick example of how Gaussian process models can be a
 
 As test data we take a [data set from the statsmodel library](www.statsmodels.org/stable/datasets/generated/sunspots.html) that describes the sun activity between the years 1700 and 2008.
 
-
+![](/_images/Data.png "The data used in this example (originally taken from [http://www.ngdc.noaa.gov/stp/solar/solarda3.html](http://www.ngdc.noaa.gov/stp/solar/solarda3.html))")
