@@ -30,7 +30,7 @@ Let us have a look at the model results below.
 
 ![](/images/ARIMA_1_0_1__1_2_1_11__prediction.png "Results from the SARIMA model")
 
-It turns out, that the ARIMA model does a pretty good job in forecasting. It is actually almost as good as for the known training data. 
+It turns out, that the ARIMA model does a pretty good job in forecasting. The predictions are actually almost as good for the unknown validation data as for the known training data. 
 
 Another thing, which becomes apparent is the fact that the validation data is lying completely within the confidence region of the prediction. Yet, the confidence region is probably too large and even exceeds into the negative value range. While the latter can easily be fixed by a meaningful transformation of the data (e.g. power transform), the generally quite large  confidence region will remain mostly unchanged by a transformation.
 
@@ -38,12 +38,12 @@ Let us now compare to a Gaussian process model.
 
 ### The Gaussian process model
 
-The behavior of the Gaussian process (GP) model is mainly defined by the so-called covariance function or kernel. The kernel describes how the behavior for different time stamps correlates with each other.  Since we have a very complex time dependent behavior, we have to create composed kernel function that captures all the different properties of the data. Therefore, we have a standard radial basis function kernel for the long-range effects, as well as two exponential sine squared kernels that allow for the periodicity in the function, and a noise term. 
+The behavior of the Gaussian process (GP) model is mainly defined by the so-called covariance function or kernel. The kernel describes how the behavior for different time stamps correlates with each other. Since we have a very complex time dependent behavior, we have to create a composed kernel function that captures all the different properties of the data. So we have a standard radial basis function kernel for the long-range effects, as well as two exponential sine squared kernels that allow for the periodicity in the function, and a noise term. 
 
 The training of the model is done via multiple runs of a LBFGSB minimizer with different starting conditions. 
 
 ![](/images/GP_prediction.png "Results from the Gaussian process model")
 
-Compared to the ARIMA model, the GP model is inferior when it comes to forecasts for unknown future data, while being superior in capturing the known behavior. In a sense, this is understandable, because in the end the GP model kind of interpolates the known data and as such is notoriously bad at extrapolating. Moreover, the model predictions (if you do not incorporate a mean function) will always tend to zero (or to the mean of the data, if the output data is normalized); you only need to be far enough from the data.  
+Compared to the ARIMA model, the GP model is inferior when it comes to forecasts for unknown future data, while being superior in capturing the known behavior. In a sense, this is understandable, because in the end the GP model kind of interpolates the known data and as such it is notoriously bad at extrapolating. Moreover, the model predictions (if you do not incorporate a mean function) will always tend to zero far away from the data (or to the mean of the data, if the output data is normalized). How quickly this happens only depends on the lengthscale hyperparameters of the GP model. 
 
-In this respect, the obtained results for the GP model are actually quite OK. However, the forecasts are still not good enough to be able to compete with the ARIMA model, especially also when looking at the confidence regions, which do not completely enclose the validation data. 
+In this respect, the obtained results for the GP model are actually quite OK. However, the forecasts are still not good enough to be able to compete with the ARIMA model, especially also when looking at the confidence regions, which do not completely enclose the validation data, hence cannot be used for a meaningful estimation for lower and upper bounds. 
