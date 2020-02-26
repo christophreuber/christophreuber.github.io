@@ -14,15 +14,18 @@ As such, their predictions always consist of a full distribution with mean and c
 
 So let us have a look at a quick example of how Gaussian process models can be applied and how they compare to an [ARIMA approach](https://www.digitalocean.com/community/tutorials/a-guide-to-time-series-forecasting-with-arima-in-python-3). 
 
+### The data
+
 As test data we take a [data set from the statsmodel library](www.statsmodels.org/stable/datasets/generated/sunspots.html) that describes the sun activity between the years 1700 and 2008.
 
 ![](/images/Data.png "The data used in this example (originally taken from [http://www.ngdc.noaa.gov/stp/solar/solarda3.html](http://www.ngdc.noaa.gov/stp/solar/solarda3.html))")
 
-## The SARIMA model
+### The SARIMA model
 
 First, we have a look at the SARIMA model. We include a seasonal (S) part to the classical ARIMA model, since obviously the data has strong seasonal variations (the ups and downs with a more or less constant frequency).  
 
 ![](/images/ARIMA_1_0_1__1_2_1_11__prediction.png "Results from the SARIMA model")
 
+### The Gaussian process model
 
 ![](/images/GP_prediction.png "Results from the Gaussian process model")
