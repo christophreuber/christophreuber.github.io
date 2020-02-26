@@ -1,4 +1,4 @@
-# A short comparison of an ARIMA model with a Gaussian process for time series forecasts
+# A short comparison of an ARIMA model with a Gaussian process model for time series forecasts
 
 If we do forecasts then what we usually aim at is accuracy of the prediction. However, this is only one part of the story. You do not only want to make sure that your models are accurate but you also want to know how much you can trust the prediction.
 
